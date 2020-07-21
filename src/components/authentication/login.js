@@ -11,6 +11,7 @@ const Login = () => {
     const [data, setData] = useState({
         email: '',
         password: '',
+        errors: '',
     });
 
     const dispatch = useDispatch();
@@ -34,12 +35,13 @@ const Login = () => {
                 if (response.data.logged_in) {
                     dispatch(logged(response.data));
                     history.push('/dashboard')
+                } else {
+                    setData({
+                        ...data,
+                        errors: <p className="alert alert-danger ">Wrong User or Password</p>
+                    })
                 }
-                console.log("login_petition", response)
             })
-            .catch(error => {
-                console.log("errors login_petition", error)
-            });
 
         event.preventDefault()
     }
@@ -56,7 +58,8 @@ const Login = () => {
     return (
         <div>
             <hr />
-            <h3 className="form-group">Loggin in your account </h3>
+            {data.errors}
+            <h4 className="form-group">Login</h4>
 
             <form onSubmit={handleSubmit}>
                 <div className="form-group">

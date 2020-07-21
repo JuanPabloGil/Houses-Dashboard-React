@@ -37,7 +37,6 @@ const Registration = () => {
                 if (response.status === 200) {
                     dispatch(logged(response.data));
                     history.push('/dashboard')
-                    //     console.log("response of registration ", response)
                 }
             })
             .catch(error => {
@@ -62,7 +61,7 @@ const Registration = () => {
         <div>
             <hr />
             {data.errors}
-            <h3 className="form-group">Create a new Account</h3>
+            <h4 className="form-group">Create Account</h4>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <input
