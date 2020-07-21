@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import { useDispatch, useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-
 import { useHistory } from "react-router-dom";
-import { logged } from '../actions'
+import { logged } from '../../actions'
 
-const Registration = () => {
+const Login = () => {
 
-    // const loggedin = useSelector(state => state.logged);
     const history = useHistory();
 
     const [data, setData] = useState({
-        username: '',
+        email: '',
         password: '',
     });
 
@@ -21,27 +18,27 @@ const Registration = () => {
 
     const handleSubmit = (event) => {
 
-        const { email, password, password_confirmation } = data
+        const { email, password } = data
         axios
-            .post('http://localhost:3001/registrations',
+            .post('http://localhost:3001/sessions',
                 {
                     user: {
                         email: email,
                         password: password,
-                        password_confirmation: password_confirmation
                     }
                 },
 
                 { withCredentials: true }
             )
             .then(response => {
-                if (response.status === 200) {
+                if (response.data.logged_in) {
                     dispatch(logged(response.data));
-                    history.push('/')
+                    history.push('/dashboard')
                 }
+                console.log("login_petition", response)
             })
             .catch(error => {
-                console.log("errors", error)
+                console.log("errors login_petition", error)
             });
 
         event.preventDefault()
@@ -55,11 +52,12 @@ const Registration = () => {
         });
     }
 
-    // console.log(loggedin)
 
     return (
         <div>
-            Registration goes here
+            <hr />
+            <h3 className="form-group">Loggin in your account </h3>
+
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <input
@@ -81,20 +79,10 @@ const Registration = () => {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="password"
-                        name="password_confirmation"
-                        placeholder="Password Confirmation"
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button className="btn btn-info" type="submit">Register</button>
+                <button className="btn btn-info" type="submit">Login</button>
             </form>
         </div>
     );
 };
 
-export default Registration;
+export default Login;
