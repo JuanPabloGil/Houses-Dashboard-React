@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom"
 import Axios from 'axios';
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { useDispatch } from 'react-redux';
+import { logged } from './actions';
 import Home from './components/home'
 import Dashboard from './components/dashboard'
-import { logged } from './actions';
+import Navigation from './components/navigation/navigation';
+
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = () => {
 
@@ -25,7 +29,7 @@ const App = () => {
 
     return (
         <div className="App">
-
+            <Navigation />
             <div className="container">
                 <BrowserRouter>
                     <Switch>
