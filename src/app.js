@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { useDispatch } from 'react-redux';
 import { logged } from './actions';
 import Home from './components/home'
+import House from './components/house'
 import Dashboard from './components/dashboard'
 import Navigation from './components/navigation/navigation';
 
@@ -29,15 +30,17 @@ const App = () => {
 
     return (
         <div className="App">
-            <Navigation />
-            <div className="container">
-                <BrowserRouter>
+            <BrowserRouter>
+                <Navigation />
+                <div className="container">
                     <Switch>
                         <Route exact path={"/"} component={Home} />
                         <Route exact path={"/dashboard"} component={Dashboard} />
+                        <Route path="/house/:id" component={House} />
                     </Switch>
-                </BrowserRouter>
-            </div>
+
+                </div>
+            </BrowserRouter>
         </div>
     );
 };
