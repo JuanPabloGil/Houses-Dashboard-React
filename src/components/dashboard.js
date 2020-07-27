@@ -54,6 +54,7 @@ const Dashboard = () => {
         <div>
             <h1>Dashboard</h1>
             {data.errors}
+            <h3 className="mt-5">Create a new House</h3>
             <form >
                 <div className="form-group">
                     <input
@@ -70,6 +71,7 @@ const Dashboard = () => {
                     <select
                         onChange={handleChange}
                         className="form-control"
+                        name="category"
                     >
                         <option value="House">House</option>
                         <option value="Aparment" >Aparment</option>
@@ -101,7 +103,11 @@ const Dashboard = () => {
                 </div>
             </form>
             <button type="submit" className="btn bg-info text-white" onClick={handelSubmit}>Create new House</button>
+            <hr />
+
+            <h3>My Houses</h3>
         </div>
+
     );
 };
 export default Dashboard;
