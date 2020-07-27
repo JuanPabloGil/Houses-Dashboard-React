@@ -17,7 +17,6 @@ const MyHousesList = props => {
           window.location.reload(false);
         }
       });
-    // .catch(error => {  });
   };
 
   return (

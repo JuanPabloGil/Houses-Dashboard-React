@@ -9,6 +9,7 @@ import Dashboard from './components/dashboard';
 import Navigation from './components/navigation/navigation';
 import Signup from './components/authentication/signup';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Favorites from './components/favorites';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const App = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/favorites" component={Favorites} />
             <Route path="/house/:id" component={House} />
           </Switch>
         </div>

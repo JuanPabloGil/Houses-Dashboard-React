@@ -62,6 +62,7 @@ const Navigation = () => {
           <div className="font-weight-light">
             <a className="nav-link" href="/">Home</a>
             <a className="nav-link" href="/dashboard">Dashboard</a>
+            <a className="nav-link" href="/favorites">Favorites</a>
           </div>
         </div>
       </nav>

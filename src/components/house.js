@@ -3,13 +3,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import houseImage from '../assets/images/house-image.jpg';
 import '../assets/styles/houses.css';
+import Axios from 'axios';
 
 const House = props => {
   const { location } = props;
   const { data } = location;
   const {
-    title, about, category, price, created_at,
+    id, title, about, category, price, created_at,
   } = data;
+
+  const handleFavorites = () => {
+    Axios.post('http://localhost:3001/favorites', { house_id: id }, { withCredentials: true })
+      .then(response => { console.log("response of add to favorite", response) })
+      .catch(error => { console.log("catch error on add favorite", error) })
+  }
 
   const time = created_at.split('T')[0];
 
@@ -38,7 +45,7 @@ const House = props => {
             {time}
           </span>
           <hr />
-          <button type="button" className="btn btn-info btn-block"> Add to favorites</button>
+          <button type="button" onClick={handleFavorites} className="btn btn-info btn-block"> Add to favorites</button>
         </div>
 
       </div>
