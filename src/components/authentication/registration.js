@@ -1,3 +1,4 @@
+/* eslint camelcase: ["error", {"properties": "never", ignoreDestructuring: true}] */
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';

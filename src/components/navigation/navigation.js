@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import Axios from 'axios';
-import '../../assets/styles/navigation.css';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logged } from '../../actions';
+import '../../assets/styles/navigation.css';
 
 const Navigation = () => {
   const [style, setStyle] = useState({

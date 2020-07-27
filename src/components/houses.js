@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import houseImage from '../assets/images/house-image.jpg';
 
 const HousesList = props => {
   const { data } = props;
@@ -12,6 +13,7 @@ const HousesList = props => {
   return (
     <div className="col-md-6 col-lg-4">
       <div className="shadow p-3 mb-5 bg-white rounded">
+        <img src={houseImage} className="img-fluid" alt="House" />
         <hr />
         <div className="row">
           <div className="col-8">
@@ -46,10 +48,10 @@ const HousesList = props => {
 
 HousesList.propTypes = {
   data: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     title: PropTypes.string,
     category: PropTypes.string,
-    price: PropTypes.string,
+    price: PropTypes.number,
   }).isRequired,
 };
 
