@@ -32,7 +32,7 @@ const House = props => {
   };
 
   const isFavorite = () => {
-    Axios.post('http://localhost:3001/is_favorite', { house_id: id }, { withCredentials: true })
+    Axios.post('http://localhost:3001/isfavorite', { house_id: id }, { withCredentials: true })
       .then(response => {
         if (response.data.status) {
           setFavorite({
