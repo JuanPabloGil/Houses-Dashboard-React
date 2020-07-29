@@ -1,9 +1,9 @@
 /* eslint camelcase: ["error", {"properties": "never", ignoreDestructuring: true}] */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Axios from 'axios';
 import houseImage from '../assets/images/house-image.jpg';
 import '../assets/styles/houses.css';
-import Axios from 'axios';
 
 const House = props => {
   const { location } = props;
@@ -12,11 +12,50 @@ const House = props => {
     id, title, about, category, price, created_at,
   } = data;
 
+  const [favorite, setFavorite] = useState({
+    itsFavorite: false,
+    favoriteId: null,
+    display: 'Add to Favorites',
+  });
+
+  const handleDeleteFavorites = () => {
+    Axios.delete(`http://localhost:3001/favorites/${favorite.favoriteId}`, { withCredentials: true })
+      .then(response => {
+        if (response.data.status === 'deleted') {
+          setFavorite({
+            itsFavorite: false,
+            favoriteId: null,
+            display: 'Add to Favorites',
+          });
+        }
+      });
+  };
+
+  const isFavorite = () => {
+    Axios.post('http://localhost:3001/is_favorite', { house_id: id }, { withCredentials: true })
+      .then(response => {
+        if (response.data.status) {
+          setFavorite({
+            itsFavorite: true,
+            favoriteId: response.data.favoriteId,
+            display: 'Delete from  Favorites',
+          });
+        }
+      });
+  };
+
   const handleFavorites = () => {
     Axios.post('http://localhost:3001/favorites', { house_id: id }, { withCredentials: true })
-      .then(response => { console.log("response of add to favorite", response) })
-      .catch(error => { console.log("catch error on add favorite", error) })
-  }
+      .then(response => {
+        if (response.statusText === 'Created') {
+          isFavorite();
+        }
+      });
+  };
+
+  useEffect(() => {
+    isFavorite();
+  }, []);
 
   const time = created_at.split('T')[0];
 
@@ -45,9 +84,23 @@ const House = props => {
             {time}
           </span>
           <hr />
-          <button type="button" onClick={handleFavorites} className="btn btn-info btn-block"> Add to favorites</button>
+          {
+            favorite.itsFavorite
+              ? (
+                <button type="button" onClick={handleDeleteFavorites} className="btn btn-info btn-block">
+                  {' '}
+                  {favorite.display}
+                  {' '}
+                </button>
+              )
+              : (
+                <button type="button" onClick={handleFavorites} className="btn btn-info btn-block">
+                  {' '}
+                  {favorite.display}
+                </button>
+              )
+          }
         </div>
-
       </div>
     </div>
   );

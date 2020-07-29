@@ -45,11 +45,11 @@ const MyHousesList = props => {
         <button type="button" onClick={handleDelete} className="btn btn-danger m-2"> Delete House </button>
         <Link
           to={
-                        {
-                          pathname: `/house/${id}`,
-                          data,
-                        }
-                    }
+            {
+              pathname: `/house/${id}`,
+              data,
+            }
+          }
         >
           <button type="button" className="btn btn-warning m-2"> Preview House </button>
         </Link>

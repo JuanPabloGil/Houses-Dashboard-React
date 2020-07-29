@@ -3,7 +3,7 @@ import axios from 'axios';
 export const LOGGED = 'LOGGED';
 export const GET_HOUSES_SUCCES = 'GET_HOUSES_SUCCES';
 export const GET_MY_HOUSES_SUCCES = 'GET_HOUSES_SUCCES';
-export const GET_FAVORITES_SUCCESS = 'GET_FAVORITES_SUCCESS'
+export const GET_FAVORITES_SUCCESS = 'GET_FAVORITES_SUCCESS';
 
 export const logged = data => ({
   type: LOGGED,
@@ -46,8 +46,8 @@ export const getMyHouses = () => async dispatch => {
 };
 
 export const getFavorites = () => async dispatch => {
-  axios.get('http://localhost:3001/favorites',{withCredentials:true})
-    .then(response => {  
+  axios.get('http://localhost:3001/favorites', { withCredentials: true })
+    .then(response => {
       dispatch(getFavoritesSucces(response.data));
-    } )
-}
+    });
+};
