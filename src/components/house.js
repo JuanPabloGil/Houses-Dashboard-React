@@ -54,8 +54,17 @@ const House = props => {
   };
 
   useEffect(() => {
-    isFavorite();
-  }, []);
+    Axios.post('http://localhost:3001/isfavorite', { house_id: id }, { withCredentials: true })
+      .then(response => {
+        if (response.data.status) {
+          setFavorite({
+            itsFavorite: true,
+            favoriteId: response.data.favoriteId,
+            display: 'Delete from  Favorites',
+          });
+        }
+      });
+  },[id]);
 
   const time = created_at.split('T')[0];
 
