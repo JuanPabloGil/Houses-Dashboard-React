@@ -32,21 +32,21 @@ export function getFavoritesSucces(data) {
 }
 
 export const getHouses = () => async dispatch => {
-  axios.get('http://localhost:3001/houses', { withCredentials: true })
+  axios.get(' https://frozen-bayou-05010.herokuapp.com/houses')
     .then(response => {
       dispatch(getHousesSucces(response.data));
     });
 };
 
 export const getMyHouses = () => async dispatch => {
-  axios.get('http://localhost:3001/myhouses', { withCredentials: true })
+  axios.get(' https://frozen-bayou-05010.herokuapp.com/myhouses')
     .then(response => {
       dispatch(getMyHousesSucces(response.data));
     });
 };
 
 export const getFavorites = () => async dispatch => {
-  axios.get('http://localhost:3001/favorites', { withCredentials: true })
+  axios.get(' https://frozen-bayou-05010.herokuapp.com/favorites')
     .then(response => {
       dispatch(getFavoritesSucces(response.data));
     });

@@ -26,14 +26,13 @@ const NewHouseForm = () => {
       title, about, price, category,
     } = data;
 
-    Axios.post('http://localhost:3001/houses',
+    Axios.post(' https://frozen-bayou-05010.herokuapp.com/houses',
       {
         title,
         about,
         price,
         category,
-      },
-      { withCredentials: true })
+      })
       .then(response => {
         if (response.statusText === 'Created') {
           history.push('/');

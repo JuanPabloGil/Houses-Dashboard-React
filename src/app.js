@@ -15,7 +15,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   const checkLoginStatus = () => {
-    Axios.get('http://localhost:3001/logged_in', { withCredentials: true })
+    Axios.get(' https://frozen-bayou-05010.herokuapp.com/logged_in')
       .then(response => {
         if (response.data.logged_in) {
           dispatch(logged(response.data.user));
