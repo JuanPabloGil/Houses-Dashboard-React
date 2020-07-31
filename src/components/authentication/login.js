@@ -24,7 +24,7 @@ const Login = () => {
             email,
             password,
           },
-        })
+        }, { withCredentials: true })
       .then(response => {
         if (response.data.logged_in) {
           dispatch(logged(response.data));

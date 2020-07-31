@@ -26,7 +26,7 @@ const Registration = () => {
             password,
             password_confirmation,
           },
-        })
+        }, { withCredentials: true })
       .then(response => {
         if (response.status === 200) {
           dispatch(logged(response.data));
