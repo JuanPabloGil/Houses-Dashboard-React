@@ -19,15 +19,14 @@ const Registration = () => {
   const handleSubmit = event => {
     const { email, password, password_confirmation } = data;
     axios
-      .post('http://localhost:3001/registrations',
+      .post(' https://frozen-bayou-05010.herokuapp.com/registrations',
         {
           user: {
             email,
             password,
             password_confirmation,
           },
-        },
-        { withCredentials: true })
+        }, { withCredentials: true })
       .then(response => {
         if (response.status === 200) {
           dispatch(logged(response.data));

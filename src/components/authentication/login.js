@@ -18,15 +18,13 @@ const Login = () => {
   const handleSubmit = event => {
     const { email, password } = data;
     axios
-      .post('http://localhost:3001/sessions',
+      .post(' https://frozen-bayou-05010.herokuapp.com/sessions',
         {
           user: {
             email,
             password,
           },
-        },
-
-        { withCredentials: true })
+        }, { withCredentials: true })
       .then(response => {
         if (response.data.logged_in) {
           dispatch(logged(response.data));

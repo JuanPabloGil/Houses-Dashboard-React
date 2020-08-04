@@ -19,7 +19,7 @@ const House = props => {
   });
 
   const handleDeleteFavorites = () => {
-    Axios.delete(`http://localhost:3001/favorites/${favorite.favoriteId}`, { withCredentials: true })
+    Axios.delete(` https://frozen-bayou-05010.herokuapp.com/favorites/${favorite.favoriteId}`, { withCredentials: true })
       .then(response => {
         if (response.data.status === 'deleted') {
           setFavorite({
@@ -32,7 +32,7 @@ const House = props => {
   };
 
   const isFavorite = () => {
-    Axios.post('http://localhost:3001/isfavorite', { house_id: id }, { withCredentials: true })
+    Axios.post(' https://frozen-bayou-05010.herokuapp.com/isfavorite', { house_id: id }, { withCredentials: true })
       .then(response => {
         if (response.data.status) {
           setFavorite({
@@ -45,7 +45,7 @@ const House = props => {
   };
 
   const handleFavorites = () => {
-    Axios.post('http://localhost:3001/favorites', { house_id: id }, { withCredentials: true })
+    Axios.post(' https://frozen-bayou-05010.herokuapp.com/favorites', { house_id: id }, { withCredentials: true })
       .then(response => {
         if (response.statusText === 'Created') {
           isFavorite();
@@ -54,7 +54,7 @@ const House = props => {
   };
 
   useEffect(() => {
-    Axios.post('http://localhost:3001/isfavorite', { house_id: id }, { withCredentials: true })
+    Axios.post(' https://frozen-bayou-05010.herokuapp.com/isfavorite', { house_id: id }, { withCredentials: true })
       .then(response => {
         if (response.data.status) {
           setFavorite({
@@ -64,7 +64,7 @@ const House = props => {
           });
         }
       });
-  },[id]);
+  }, [id]);
 
   const time = created_at.split('T')[0];
 

@@ -29,7 +29,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    Axios.delete('http://localhost:3001/logout', { withCredentials: true })
+    Axios.delete(' https://frozen-bayou-05010.herokuapp.com/logout', { withCredentials: true })
       .then(response => {
         if (response.data.logged_out) {
           history.push('/signup');
