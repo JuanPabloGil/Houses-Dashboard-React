@@ -49,7 +49,7 @@ This project its a house managment web application template, it was designed the
 
 ## Live Demo
 
-    [LIVE PREVIEW](https://dry-garden-66882.herokuapp.com/)
+[LIVE PREVIEW](https://dry-garden-66882.herokuapp.com/)
 
 ## Getting Started
 
@@ -58,16 +58,16 @@ To get a local copy up and running follow these simple example steps.
 ### Clone the project 
 
 ```
-    git clone https://github.com/JuanPabloGil/Houses-Dashboard-React.git
+    $ git clone https://github.com/JuanPabloGil/Houses-Dashboard-React.git
 ```
 ### Download the project 
 
-```
-    https://github.com/JuanPabloGil/Houses-Dashboard-React/archive/production-2.zip
-```
+https://github.com/JuanPabloGil/Houses-Dashboard-React/archive/production-2.zip
 
 ### Prerequisites
-    run the command `npm install`
+run the command 
+    
+    `npm install`
 
 
 ## Available Scripts
