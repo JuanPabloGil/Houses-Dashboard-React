@@ -11,7 +11,7 @@ const MyHousesList = props => {
   } = data;
 
   const handleDelete = () => {
-    Axios.delete(` https://frozen-bayou-05010.herokuapp.com/houses/${id}` , {withCredentials: true})
+    Axios.delete(` https://frozen-bayou-05010.herokuapp.com/houses/${id}`, { withCredentials: true })
       .then(response => {
         if (response.status === 204) {
           window.location.reload(false);

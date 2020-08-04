@@ -32,7 +32,7 @@ const NewHouseForm = () => {
         about,
         price,
         category,
-      }, {withCredentials: true})
+      }, { withCredentials: true })
       .then(response => {
         if (response.statusText === 'Created') {
           history.push('/');
