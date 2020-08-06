@@ -1,0 +1,13 @@
+.img-with-text {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bottom-right-text {
+  position: absolute;
+  bottom: 8px;
+  right: 30px;
+  text-shadow: 1px 1px 1px black;
+  font-size: 21px;
+}
